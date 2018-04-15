@@ -1,6 +1,6 @@
 segment .data
 
-	a: dq 0
+    a: dq 0
     b: dq 0
     i: dq 0
     j: dq 0
@@ -9,20 +9,20 @@ segment .data
     cnt: dq 1
     temp: dq 0
 
-	fmt_in: dq "%lld %lld",0
-	fmt_out: dq "GCD: %lld",10,0
+    fmt_in: dq "%lld %lld",0
+    fmt_out: dq "GCD: %lld",10,0
 
 segment .bss
-	ara resq 21
+    ara resq 21
 
 segment .text
-	global main
-	global gcd
-	extern printf
-	extern scanf
+    global main
+    global gcd
+    extern printf
+    extern scanf
 
 main:
-	push rbp
+    push rbp
     mov rbp,rsp
     mov rdi,fmt_in
     mov rsi,a
@@ -32,21 +32,21 @@ main:
     mov rdi,[a]
     mov rsi,[b]
     call gcd
-	mov rsi,rax
+    mov rsi,rax
     mov rdi,fmt_out
     call printf
     xor eax,eax
     leave
     ret
 gcd:
-	push rbp
+    push rbp
     mov rbp,rsp
     sub rsp,32
     mov rax,rsi
     mov [i],rsi
     mov [j],rdi
-	cqo    
-	idiv rdi
+    cqo    
+    idiv rdi
     mov [k],rdx
     cmp rdx,0
     je result
@@ -58,7 +58,7 @@ gcd:
     ret
     
 result:
-	mov rax,[j]
+    mov rax,[j]
     mov [d],rax
     leave
     ret
